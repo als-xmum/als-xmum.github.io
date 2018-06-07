@@ -5,15 +5,19 @@
   
 
   
-  <title>ALS Challenge</title>
+  <title>Claim My Photo | ALS Challenge</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ALS Challenge">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Claim   Here is your photo:    Download  window.document.addEventListener(&quot;DOMContentLoaded&quot;, function () { var $claim = $(&apos;#claim-panel&apos;).hide() var $code = $(&apos;#code-txt&apos;) var $img = $(&apos;#small-pic&apos;)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Claim My Photo">
+<meta property="og:url" content="http://yoursite.com/claim/index.html">
 <meta property="og:site_name" content="ALS Challenge">
+<meta property="og:description" content="Claim   Here is your photo:    Download  window.document.addEventListener(&quot;DOMContentLoaded&quot;, function () { var $claim = $(&apos;#claim-panel&apos;).hide() var $code = $(&apos;#code-txt&apos;) var $img = $(&apos;#small-pic&apos;)">
 <meta property="og:locale" content="en_US">
+<meta property="og:updated_time" content="2018-06-07T09:03:48.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ALS Challenge">
+<meta name="twitter:title" content="Claim My Photo">
+<meta name="twitter:description" content="Claim   Here is your photo:    Download  window.document.addEventListener(&quot;DOMContentLoaded&quot;, function () { var $claim = $(&apos;#claim-panel&apos;).hide() var $code = $(&apos;#code-txt&apos;) var $img = $(&apos;#small-pic&apos;)">
   
     <link rel="alternate" href="/atom.xml" title="ALS Challenge" type="application/atom+xml">
   
@@ -60,12 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-About-ALS" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/31/About-ALS/" class="article-date">
-  <time datetime="2018-05-31T02:06:42.000Z" itemprop="datePublished">2018-05-31</time>
+    <a href="/claim/index.html" class="article-date">
+  <time datetime="2018-06-07T08:30:08.000Z" itemprop="datePublished">2018-06-07</time>
 </a>
     
   </div>
@@ -75,8 +77,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/31/About-ALS/">About ALS</a>
+    <h1 class="article-title" itemprop="name">
+      Claim My Photo
     </h1>
   
 
@@ -84,25 +86,47 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>“一个人的肉体是由和地球一样古老的物质组成的，其中的三分之一年龄甚至和宇宙相当。”</p>
-<p>对于 ALS 的患者来说，与他们僵硬木讷的躯体相对的，是他们浩瀚星空一般的精神世界。</p>
-<p>不论是活着——由错综复杂的神经网络带来的深邃思考，<br>还是死亡——由体内原子的特定组合打散重组的过程，<br>都是复杂精妙如星河的存在。</p>
-<p>或者说，他们的存在本身就是来自宇宙的美好。</p>
+        <p><input type="text" id="code-txt" placeholder="Enter code here"></p>
+<p><button id="code-btn">Claim</button></p>
+<p><div id="claim-panel"><br>  Here is your photo:<br>  <img id="small-pic"><br>  <button id="down-btn" data-code="">Download</button><br></div></p>
+<script>
+window.document.addEventListener("DOMContentLoaded", function () {
+var $claim = $('#claim-panel').hide()
+var $code = $('#code-txt')
+var $img = $('#small-pic')
+var $down = $('#down-btn')
+$('#code-btn').click(function () {
+  var code = $code.val().toUpperCase()
+  $.get('https://als.xmux.cf/check?code=' + code).then(function (ret) {
+    if (ret !== 'true') {
+      alert('Picture not found. Please check your code and try again.')
+      return
+    }
+    $down.data('code', code)
+    $claim.fadeIn()
+    $img.attr('src', 'https://als.xmux.cf/file/' + code + '/small.jpg')
+  })
+})
+$down.click(function () {
+  var code = $down.data('code')
+  window.location.href = 'https://als.xmux.cf/file/' + code + '/origin.jpg'
+})
+})
+</script>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/31/About-ALS/" data-id="cji4a8r7l0001hjmf6f72cqp8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/claim/index.html" data-id="cji4bcjsw0007iemfut6zqov7" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
-</article>
-
-
+    
   
-
+</article>
 
 </section>
         
