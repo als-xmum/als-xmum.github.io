@@ -88,13 +88,14 @@
       
         <p><input type="text" id="code-txt" placeholder="Enter code here"></p>
 <p><button id="code-btn">Claim</button></p>
-<p><div id="claim-panel"><br>  Here is your photo:<br>  <img id="small-pic"><br>  <button id="down-btn" data-code="">Download</button><br></div></p>
+<p><div id="claim-panel"><br>  Here is your photo:<br>  <img id="small-pic"><br>  <button id="down-btn" data-code="">Download</button><p id="wechat-prompt">Long press your photo above to save.</p><br></div></p>
 <script>
 window.document.addEventListener("DOMContentLoaded", function () {
 var $claim = $('#claim-panel').hide()
 var $code = $('#code-txt')
 var $img = $('#small-pic')
 var $down = $('#down-btn')
+var $wechatP = $('#wechat-prompt')
 $('#code-btn').click(function () {
   var code = $code.val().toUpperCase()
   $.get('https://als.xmux.cf/check?code=' + code).then(function (ret) {
@@ -105,6 +106,12 @@ $('#code-btn').click(function () {
     $down.data('code', code)
     $claim.fadeIn()
     $img.attr('src', 'https://als.xmux.cf/file/' + code + '/small.jpg')
+    if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {  
+      $img.attr('src', 'https://als.xmux.cf/file/' + code + '/origin.jpg')
+      $down.hide()
+    } else {
+      $wechatP.hide()
+    }
   })
 })
 $down.click(function () {
